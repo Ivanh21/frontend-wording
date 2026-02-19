@@ -1,8 +1,8 @@
 /**
  * Development environment.
- * API base URL: point to your backend (e.g. local Spring Boot).
+ * API base URL: point to your backend (see API.md — default backend runs on 8090).
  */
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://localhost:8080',
+  apiBaseUrl: 'http://localhost:8090',
 };

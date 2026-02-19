@@ -1,0 +1,41 @@
+### Backend Wording API — use with Postman or VS Code REST Client
+### Base URL (start backend on 8090 first)
+@base = http://localhost:8090
+
+### 1. GET translations (full matrix)
+GET {{base}}/api/v1/translations
+
+###
+
+### 2. GET config (languages + versions)
+GET {{base}}/api/v1/config
+
+###
+
+### 3. POST publish (example: publish FR)
+POST {{base}}/api/v1/publish
+Content-Type: application/json
+
+{
+  "lang": "fr"
+}
+
+###
+
+### 4. POST save draft (example body — adjust to your keys)
+# Copy the full body from API.md §2 for a real save
+POST {{base}}/api/v1/translations
+Content-Type: application/json
+
+{
+  "translations": [
+    {
+      "key": "HOME",
+      "values": {
+        "fr": { "TITLE": "Accueil", "SUBTITLE": "Bienvenue" },
+        "en": { "TITLE": "Home", "SUBTITLE": "Welcome" }
+      },
+      "isDraft": true
+    }
+  ]
+}

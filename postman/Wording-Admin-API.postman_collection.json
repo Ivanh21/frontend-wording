@@ -1,0 +1,56 @@
+{
+  "info": {
+    "name": "Wording Admin API",
+    "description": "Backend API from API.md. Base URL: http://localhost:8090",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8090" }
+  ],
+  "item": [
+    {
+      "name": "GET translations",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/v1/translations",
+        "description": "Full matrix (published + drafts). Response: array of { key, values: { fr: {...}, en: {...} }, isDraft }"
+      }
+    },
+    {
+      "name": "GET config",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/v1/config",
+        "description": "Active languages + current version per language."
+      }
+    },
+    {
+      "name": "POST publish",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"lang\": \"fr\"\n}"
+        },
+        "url": "{{baseUrl}}/api/v1/publish",
+        "description": "Publish one language. Body: { \"lang\": \"fr\" }"
+      }
+    },
+    {
+      "name": "POST save draft",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"translations\": [\n    {\n      \"key\": \"HOME\",\n      \"values\": {\n        \"fr\": { \"TITLE\": \"Accueil\", \"SUBTITLE\": \"Bienvenue\" },\n        \"en\": { \"TITLE\": \"Home\", \"SUBTITLE\": \"Welcome\" }\n      },\n      \"isDraft\": true\n    }\n  ]\n}"
+        },
+        "url": "{{baseUrl}}/api/v1/translations",
+        "description": "Save translations as draft. Adjust keys/values to match your backend."
+      }
+    }
+  ]
+}

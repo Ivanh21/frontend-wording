@@ -9,6 +9,8 @@ html, body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: #f0f2f5;
+  color: #1a1a1a;
 }
 
 /* Angular Material overrides can go here */
