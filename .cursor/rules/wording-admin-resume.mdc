@@ -1,0 +1,31 @@
+---
+description: Context to resume Wording Admin frontend — Phase 1 done, Phase 2/3 next
+alwaysApply: true
+---
+
+# Wording Admin Frontend — Resume Context
+
+## Project
+
+- **Repo**: `frontend-wording` (Angular admin UI for the translation platform).
+- **Location**: `C:\Users\PiLL4R\Documents\Projects\Front + Back Interface\frontend-wording`.
+- **Backend**: Spring Boot (see [architecture](https://github.com/Ivanh21/backend-wording/blob/main/architecture_design.md)); frontend calls its REST API.
+
+## Tech
+
+- Angular 16, standalone components, Angular Material 16, `provideRouter` + `provideHttpClient` + `provideAnimations`.
+- API base URL: `src/environments/environment.ts` (dev: `http://localhost:8080`), `environment.prod.ts` for prod.
+
+## Phase 1 (Done)
+
+- App shell with toolbar nav (Dashboard, Settings), lazy routes.
+- `TranslationApiService` (`src/app/core/api/translation-api.service.ts`): `getTranslations()`, `saveTranslations(body)`, `publish({ languageCode })` → `GET/POST /api/v1/translations`, `POST /api/v1/publish`.
+- Shared models in `src/app/shared/models/`: `Language`, `TranslationRow`, `TranslationMatrix`, `VersionConfig`, `SaveTranslationsDto`, `PublishDto`.
+- Placeholder Dashboard and Settings components; ready for real UI.
+
+## Next
+
+- **Phase 2 — Dashboard**: Load translation matrix, editable table (Key | column per language), draft indicator, “Save draft”, “Publish” per language (with confirmation).
+- **Phase 3 — Settings**: List languages and current versions; add/remove language if backend supports it.
+
+When resuming, continue from Phase 2 (Dashboard) unless the user asks for something else. Align request/response DTOs with the backend if its API shape differs from the current models.
